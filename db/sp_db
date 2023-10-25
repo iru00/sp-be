@@ -1,0 +1,420 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 25 Okt 2023 pada 05.29
+-- Versi server: 10.4.28-MariaDB
+-- Versi PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `sp_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `hash_id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `categories`
+--
+
+INSERT INTO `categories` (`id`, `hash_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, '*E6CC90B878B948C35E92B003C792C46C58C4AF40', 'Banner', '2023-10-02 02:51:22', NULL),
+(2, '*12033B78389744F3F39AC4CE4CCFCAD6960D8EA0', 'Restoran', '2023-10-02 02:51:22', NULL),
+(3, '*C4E74DDDC9CC9E2FDCDB7F63B127FB638831262E', 'Celebrate', '2023-10-02 02:51:22', NULL),
+(4, '*908BE2B7EB7D7567F7FF98716850F59BA69AA9DB', 'Event', '2023-10-02 02:51:22', '2023-10-12 04:37:37'),
+(5, '*7534F9EAEE5B69A586D1E9C1ACE3E3F9F6FCC446', 'Member Benefit', '2023-10-02 02:51:22', NULL),
+(6, '*C3AB9ECDF746570BBF9DCAA9DB3586D25956DC93', 'Berita', '2023-10-02 02:51:22', NULL),
+(7, '*23E7A7428138939FBE2F69D23E5B87383EFD83C9', 'Promo', '2023-10-02 02:51:22', '2023-10-12 04:37:46'),
+(8, '*6AF37A8C78E3A957D16D98F12788D1CFB2987A4C', 'About Us', '2023-10-02 02:51:22', NULL),
+(9, '*7E9FDC7F61153649AB9A75CED26807DF74F86E65', 'Contact Us', '2023-10-02 02:51:22', NULL),
+(10, '*15B4A9F089BEC4C84A24C5148B14A80C14651492', 'Shop', '2023-10-12 06:25:00', '2023-10-12 06:25:24'),
+(11, '*0801D10217B06C5A9F32430C1A34E030D41A0257', 'Image', '2023-10-17 05:58:56', '2023-10-20 07:15:22'),
+(12, '*AA803D048B666A933E512AA53B36C70174A37D1E', 'Video', '2023-10-17 05:58:56', '2023-10-20 07:15:22');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `subject_level` enum('1','2') NOT NULL,
+  `is_message` text NOT NULL,
+  `status` enum('0','1','2') NOT NULL DEFAULT '0',
+  `is_delete` enum('0','1') NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `email`, `name`, `phone`, `subject_level`, `is_message`, `status`, `is_delete`, `created_at`, `updated_at`) VALUES
+(11, 'bprohaska@yahoo.com', 'Adrian Christiansen', '+14329399701', '1', 'Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.Porro voluptatem reiciendis ut eos. Porro suscipit beatae suscipit a. Id qui quia beatae eum.', '0', '0', '2023-10-18 03:02:39', '2023-10-23 02:19:09'),
+(12, 'antonette.willms@gmail.com', 'Maybell Schimmel', '(640) 845-3606', '1', 'Iste dolores ipsum necessitatibus commodi minima exercitationem voluptates. Doloremque et rerum voluptates animi. Sed cum id nam ea itaque natus. Recusandae assumenda omnis delectus delectus.', '0', '0', '2023-10-18 03:02:39', NULL),
+(13, 'vlind@parisian.info', 'Eugenia Hackett Sr.', '312.378.0226', '1', 'Perspiciatis sit dolore est nulla veritatis. Eligendi impedit non voluptatum quas ipsam necessitatibus. Non illo nihil sapiente. Perferendis dolor iure dolorum voluptatibus sunt est dolor.', '0', '0', '2023-10-18 03:02:39', NULL),
+(14, 'hand.elyse@gmail.com', 'Ivy Bernhard', '+1.947.458.5984', '1', 'Culpa eos aspernatur laudantium aliquam eaque reiciendis. Quis dolorem dolores et quo. Est autem architecto culpa sint facere ut iste ad.', '0', '0', '2023-10-18 03:02:39', NULL),
+(15, 'johnpaul.gaylord@ohara.com', 'Toni Upton DDS', '+1-740-670-3950', '1', 'Ut ex occaecati reprehenderit ut adipisci. Voluptate praesentium molestiae laborum atque sit ut enim. Sequi iure perferendis est necessitatibus libero et. Dolorem beatae dolore ex quia.', '0', '0', '2023-10-18 03:02:39', NULL),
+(16, 'simonis.burdette@kuvalis.com', 'Prof. Elbert Hyatt', '+1-817-746-1795', '2', 'Recusandae repellendus voluptatum perferendis recusandae. Commodi et cum quos aspernatur. Quis ipsam voluptas assumenda perspiciatis quae quis. Magnam corrupti ex iste doloremque.', '2', '0', '2023-10-19 08:06:46', '2023-10-23 06:23:01'),
+(17, 'oberbrunner.karl@hotmail.com', 'Moises Kunze', '+1 (904) 798-2699', '1', 'Eos qui repudiandae iusto quasi. Tempora sed quod error similique quia. Libero libero et voluptatem libero. Eos voluptatem voluptatibus quas molestiae laudantium et molestiae et.', '0', '0', '2023-10-19 08:06:46', NULL),
+(18, 'jfahey@legros.com', 'Tamara Muller Sr.', '(305) 365-6218', '1', 'Possimus eveniet laudantium cupiditate. Totam quia quia a. Et aspernatur expedita consequatur ab. Et excepturi cupiditate nulla ut aut dicta dolore. Eum sequi molestias et nihil.', '0', '0', '2023-10-19 08:06:46', NULL),
+(19, 'dariana51@abshire.com', 'Natalia Baumbach Sr.', '509.982.6089', '1', 'Similique aperiam autem vel quo. Qui est voluptatem dicta corrupti.', '1', '0', '2023-10-19 08:06:46', '2023-10-20 03:41:05'),
+(20, 'collier.joey@bosco.com', 'Shad Doyle', '541.965.0146', '1', 'Fugiat quo sit quo aut quaerat quaerat quidem. Quo est voluptates ut nisi. Fugiat aut ut non ratione quis velit nam. Expedita est quis rerum nihil sint. Atque incidunt qui fuga minus aut voluptatum.', '0', '0', '2023-10-19 08:06:46', NULL),
+(21, 'larkin.shad@wisoky.com', 'Christine Reilly', '+1.423.656.6988', '1', 'Natus et labore voluptatem unde sit ea. Consequatur natus corporis sit. Repudiandae ipsum id itaque. Qui et ducimus et eaque dolore sapiente non.', '0', '0', '2023-10-19 08:06:53', NULL),
+(22, 'arice@casper.com', 'Miss Heath Koepp MD', '+12243901946', '1', 'Fugit incidunt in voluptates excepturi fuga. Accusantium quos officiis illo. Autem aut maiores quidem nobis et. Saepe accusamus est tenetur.', '0', '0', '2023-10-19 08:06:53', NULL),
+(23, 'makenzie.paucek@hotmail.com', 'Mr. Jabari Williamson PhD', '1-386-505-6789', '1', 'Dolores numquam est repudiandae aut omnis sit itaque. Soluta laborum incidunt ut corporis neque.', '0', '0', '2023-10-19 08:06:53', NULL),
+(24, 'mraz.agnes@gmail.com', 'Alicia Bogan', '+1.747.569.9369', '1', 'Aspernatur excepturi dolorem aut. Est dicta quo odio voluptatibus necessitatibus quisquam. Eaque error ea necessitatibus et omnis.', '0', '0', '2023-10-19 08:06:53', NULL),
+(25, 'ugorczany@hotmail.com', 'Miss Velva Bruen', '218-933-1250', '1', 'Consectetur velit modi iure non dolorem aut amet ea. Facere voluptatem modi labore accusantium. Quis eos quam molestiae consequatur perferendis. Molestiae aut qui laborum molestiae id veritatis odit.', '0', '0', '2023-10-19 08:06:53', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `links`
+--
+
+CREATE TABLE `links` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `hash_id` varchar(255) NOT NULL,
+  `user_id` int(20) NOT NULL,
+  `post_id` int(20) NOT NULL,
+  `category_id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `links`
+--
+
+INSERT INTO `links` (`id`, `hash_id`, `user_id`, `post_id`, `category_id`, `name`, `path`, `created_at`, `updated_at`) VALUES
+(1, '', 2, 8, '12', 'Youtube', 'https://youtu.be/gxq95YTfrTE', NULL, '2023-10-17 05:59:15');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2023_09_15_064701_create_posts_table', 1),
+(6, '2023_09_15_064742_create_links_table', 1),
+(7, '2023_09_15_064749_create_categories_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `password_reset_tokens`
+--
+
+INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
+('i9750151@gmail.com', '$2y$10$TOO.FODTboQfxcGCfYz/2.kAMzFZhSHHLe2sHdZX5tBf6QBkTwMT2', '2023-10-05 20:47:48');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `hash_id` varchar(255) NOT NULL,
+  `user_id` int(20) NOT NULL,
+  `category_id` int(20) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `img_logo` varchar(255) DEFAULT NULL,
+  `img_path` varchar(255) DEFAULT NULL,
+  `img_banner` varchar(255) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `days` varchar(255) DEFAULT NULL,
+  `color` varchar(255) DEFAULT '#52b332',
+  `locate` varchar(255) DEFAULT NULL,
+  `link_locate` varchar(255) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `is_delete` enum('0','1') NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `posts`
+--
+
+INSERT INTO `posts` (`id`, `hash_id`, `user_id`, `category_id`, `title`, `img_logo`, `img_path`, `img_banner`, `text`, `days`, `color`, `locate`, `link_locate`, `start_date`, `end_date`, `is_delete`, `created_at`, `updated_at`) VALUES
+(1, '*E6CC90B878B948C35E92B003C792C46C58C4AF40', 2, 1, 'Banner', NULL, 'https://www.ismaya.com/storage/app/uploads/public/640/56e/b01/64056eb0131b6424299635.jpeg', NULL, 'bannerhome', NULL, 'white', NULL, NULL, NULL, NULL, '0', '2023-10-02 03:30:27', '2023-10-16 08:09:32'),
+(2, '*12033B78389744F3F39AC4CE4CCFCAD6960D8EA0', 2, 2, 'Restoranku', 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png', 'https://res.cloudinary.com/sagacity/image/upload/c_crop,h_3402,w_5103,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1080/1017-heights-bier-garten-patio_ycjtmo.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.  Located in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-05', '2023-10-12', '0', '2023-10-02 03:30:27', '2023-10-12 03:54:25'),
+(3, '*C4E74DDDC9CC9E2FDCDB7F63B127FB638831262E', 4, 2, 'Resto', 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png', 'https://res.cloudinary.com/sagacity/image/upload/c_crop,h_3402,w_5103,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1080/1017-heights-bier-garten-patio_ycjtmo.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.\n\nLocated in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-01', '2023-10-04', '0', '2023-10-05 04:45:32', '2023-10-24 02:32:54'),
+(4, '*908BE2B7EB7D7567F7FF98716850F59BA69AA9DB', 4, 2, 'Resto1', 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png', 'https://res.cloudinary.com/sagacity/image/upload/c_crop,h_3402,w_5103,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1080/1017-heights-bier-garten-patio_ycjtmo.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.\r\n\r\nLocated in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-01', '2023-10-04', '0', '2023-10-05 04:45:32', '2023-10-24 02:32:59'),
+(5, '*7534F9EAEE5B69A586D1E9C1ACE3E3F9F6FCC446', 8, 2, 'Resto2', 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png', 'https://res.cloudinary.com/sagacity/image/upload/c_crop,h_3402,w_5103,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1080/1017-heights-bier-garten-patio_ycjtmo.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.\r\n\r\nLocated in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-01', '2023-10-04', '0', '2023-10-05 04:45:32', '2023-10-24 02:33:48'),
+(6, '*C3AB9ECDF746570BBF9DCAA9DB3586D25956DC93', 2, 10, 'Shop1', 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png', 'https://www.wartaoto.com/wp-content/uploads/2021/03/40.-Kelengkapan-di-Toko-Ban-Mobil-Terdekat-dengan-Kualitas-Terbaik.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.\r\n\r\nLocated in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-01', '2023-10-24', '0', '2023-10-05 04:45:32', '2023-10-17 06:39:27'),
+(7, '*23E7A7428138939FBE2F69D23E5B87383EFD83C9', 2, 3, 'Djakarta Werehouse Project', NULL, 'https://4.bp.blogspot.com/-bPWrgxfuI3s/Th1U5FDH8bI/AAAAAAAAAIo/YvEFcXTEV7E/s1600/blue%20vector.jpg', 'https://i.ytimg.com/vi/y7dxH6k0zoM/maxresdefault.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', NULL, '#52b332', NULL, 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', NULL, NULL, '0', '2023-10-12 03:25:47', '2023-10-12 06:23:30'),
+(8, '*6AF37A8C78E3A957D16D98F12788D1CFB2987A4C', 2, 3, 'Djakarta Werehouse Project', NULL, 'https://4.bp.blogspot.com/-bPWrgxfuI3s/Th1U5FDH8bI/AAAAAAAAAIo/YvEFcXTEV7E/s1600/blue%20vector.jpg', 'https://i.ytimg.com/vi/y7dxH6k0zoM/maxresdefault.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', NULL, '#52b332', NULL, 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', NULL, NULL, '0', '2023-10-12 03:25:47', '2023-10-12 06:23:26'),
+(9, '*7E9FDC7F61153649AB9A75CED26807DF74F86E65', 2, 10, 'Shop2', 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png', 'https://www.wartaoto.com/wp-content/uploads/2021/03/40.-Kelengkapan-di-Toko-Ban-Mobil-Terdekat-dengan-Kualitas-Terbaik.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.\r\n\r\nLocated in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-01', '2023-10-04', '0', '2023-10-05 04:45:32', '2023-10-12 06:31:21'),
+(10, '*15B4A9F089BEC4C84A24C5148B14A80C14651492', 2, 10, 'Shop3', 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png', 'https://www.wartaoto.com/wp-content/uploads/2021/03/40.-Kelengkapan-di-Toko-Ban-Mobil-Terdekat-dengan-Kualitas-Terbaik.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.\r\n\r\nLocated in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-01', '2023-10-04', '0', '2023-10-05 04:45:32', '2023-10-12 06:31:21'),
+(11, '*0801D10217B06C5A9F32430C1A34E030D41A0257', 2, 10, 'Shop4', 'https://1.bp.blogspot.com/_2n9G8hS3AbI/TN-LX5yQOiI/AAAAAAAAAn4/0Uf75BFztj8/s640/Logo%2BKotak%2B2.jpg', 'https://www.wartaoto.com/wp-content/uploads/2021/03/40.-Kelengkapan-di-Toko-Ban-Mobil-Terdekat-dengan-Kualitas-Terbaik.jpg', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiko-group.com%2Fbeer-garden&psig=AOvVaw3XyvHEIkq9k1oVdhXOjQId&ust=1697097846024000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKCI-aPE7YEDFQAAAAAdAAAAABAE', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.\r\n\r\nLocated in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', 'Jakarta Selatan', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-01', '2023-10-04', '0', '2023-10-05 04:45:32', '2023-10-12 06:31:21'),
+(12, '*AA803D048B666A933E512AA53B36C70174A37D1E', 2, 4, 'Made In Comedy', NULL, 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(13, '*DFC5E490F07E908D8E0301A9961A1294F1833CDB', 2, 4, 'Made In Comedy', NULL, 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(14, '*2BB4042681093EDDB139FE897BDC3E9DC66DB3E9', 2, 4, 'Made In Comedy', NULL, 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(15, '*164FDE5FF23E4F03CC876EC8C8E7AE2DF1D2A6B9', 2, 4, 'Made In Comedy', NULL, 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(16, '*AD32FD65062E11F28615AF007C00472353B8889B', 2, 7, 'Made In Comedy', NULL, 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(17, '*F2B30D366CFF7C4585A87B431F101272244C42C4', 2, 7, 'Made In Comedy', NULL, 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(18, '*3085545A58D808FEFA4545CCD601D5E3F7A92726', 2, 7, 'Made In Comedy', NULL, 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(19, '*D547752508864FE305B97CD907BD12A1121AA77F', 2, 7, 'Made In Comedy', NULL, 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', NULL, 'Lorem Ipsum is simply dummy text of the printin', 'Sunday, Monday, Tuesday', '#52b332', 'SCBD', 'https://maps.app.goo.gl/Pif9NoM5zJFgWyc29', '2023-10-12', '2023-10-17', '0', '2023-10-12 06:22:48', '2023-10-16 08:11:15'),
+(20, '*73CD70D3F4D94BFCB566501B2909C8D435FF0A11', 2, 6, 'Berita', '', 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', '', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.  Located in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', '', '', '2023-10-05', '2023-10-12', '0', '2023-10-02 03:30:27', '2023-10-16 08:11:15'),
+(21, '*EBEFE38F24D7BF6DDD422948D227E9EB3C94527C', 2, 6, 'Berita', '', 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', '', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.  Located in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', '', '', '2023-10-05', '2023-10-12', '0', '2023-10-02 03:30:27', '2023-10-16 08:11:15'),
+(22, '*AEA73029F4DC11A88BA257A99DC751663BD0A4CB', 2, 6, 'Berita', '', 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', '', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.  Located in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', '', '', '2023-10-05', '2023-10-12', '0', '2023-10-02 03:30:27', '2023-10-16 08:11:15'),
+(23, '*DFB702FDA6D8C5DE6F7587F426C7C5B59428CAEB', 2, 6, 'Berita', '', 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', '', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.  Located in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', '', '', '2023-10-05', '2023-10-12', '0', '2023-10-02 03:30:27', '2023-10-16 08:11:15'),
+(24, '*1FB259F059F8D6E3E3F80616C04F3CA55F71FA51', 2, 8, 'Aabout Us', '', 'https://www.mahirkoding.com/wp-content/uploads/2016/06/laravel_mahirkoding-1200x762_c.jpg', 'https://images.hdqwalls.com/wallpapers/bthumb/mount-batur-ad.jpg', 'A lively neighborhood hangout that invites all patrons to experience its unique charm and lively atmosphere.  Located in a nook of Gunawarman, after years of captivating the underground scene with its mysterious allure and unparalleled libations, A/A Ba', NULL, 'white', '', '', '2023-10-05', '2023-10-12', '0', '2023-10-02 03:30:27', '2023-10-18 08:47:15'),
+(25, '*6B462CB4DD641021AA46A360968BB179E0A6947F', 2, 1, 'Banner', NULL, 'https://wallpaperaccess.com/full/1937800.jpg', NULL, 'bannerCelebrate', NULL, 'white', NULL, NULL, NULL, NULL, '0', '2023-10-02 03:30:27', '2023-10-16 08:22:41');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `hash_id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone_num` varchar(15) DEFAULT NULL,
+  `date_of_birth` date NOT NULL,
+  `gender` enum('L','P') NOT NULL,
+  `img_profil` varchar(255) DEFAULT 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg',
+  `adress` varchar(255) DEFAULT NULL,
+  `role` enum('admin','resto','shop','user') NOT NULL DEFAULT 'user',
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `hash_id`, `name`, `email`, `email_verified_at`, `password`, `phone_num`, `date_of_birth`, `gender`, `img_profil`, `adress`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'd2fec04a-6c86-4eb8-8c78-6144dc7e13a0', 'SCBD Park', 'scbdpark@gmail.com', NULL, '$2y$10$xWK3aCppOF5fEPGDbO0h.uA74gN.oqgAbm0GI97.Nb9stnlokDby.', '0000000000', '2023-04-28', 'L', 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'admin', NULL, '2023-10-01 20:11:43', '2023-10-01 20:11:43'),
+(3, 'eab29204-5826-4d59-946d-875c8acfdf7b', 'SCBD Park', 'i9750151@gmail.com', NULL, '$2y$10$gr.jTy4aRGj3VIfs.7cBx.OkH3DVNL98fNPl.qbYvzTC2cf5lij3O', '0000000000', '2023-04-28', 'L', 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'shop', NULL, '2023-10-01 21:01:37', '2023-10-01 21:01:37'),
+(4, '2b8d8f33-77f3-4c59-90e8-884bacd1fcc4', 'iawdbakuwdb', 'adadaada@gmail.com', NULL, '$2y$10$ZwJjEpA6Pj.iGzAeRjHAnO/2Tf5sfz9EPBay8Y461nsXpc0auCa8O', '1927391721987', '2023-10-07', 'L', 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'resto', NULL, '2023-10-10 23:36:17', '2023-10-10 23:36:17'),
+(5, 'ceb22142-1849-4fe5-ae7a-24c178ab0e52', 'Nicholas', 'nowen366@gmail.com', NULL, '$2y$10$sz/UzKuEBEn1FegmrrkURO5A.mmdLZmCcjcmCsi7jML25O7348Ive', '08170065500', '2023-10-07', 'L', 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'user', NULL, '2023-10-10 23:48:25', '2023-10-10 23:48:25'),
+(8, '', 'sasasasasada', 'jdhsdnaasb@gmail.com', NULL, '$2y$10$ZwJjEpA6Pj.iGzAeRjHAnO/2Tf5sfz9EPBay8Y461nsXpc0auCa8O', '1927391721987', '2023-10-07', 'L', 'https://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg', NULL, 'resto', NULL, '2023-10-10 23:36:17', '2023-10-10 23:36:17');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categories_hash_id_index` (`hash_id`);
+
+--
+-- Indeks untuk tabel `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `email` (`email`);
+
+--
+-- Indeks untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indeks untuk tabel `links`
+--
+ALTER TABLE `links`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `links_hash_id_index` (`hash_id`),
+  ADD KEY `links_user_id_index` (`user_id`),
+  ADD KEY `links_post_id_index` (`post_id`),
+  ADD KEY `links_category_id_index` (`category_id`);
+
+--
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indeks untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indeks untuk tabel `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `posts_hash_id_index` (`hash_id`),
+  ADD KEY `posts_user_id_index` (`user_id`),
+  ADD KEY `posts_category_id_index` (`category_id`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `users_hash_id_index` (`hash_id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT untuk tabel `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `links`
+--
+ALTER TABLE `links`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
